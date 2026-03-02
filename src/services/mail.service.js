@@ -49,3 +49,5 @@ async function sendregistrationEmail(userEmail, name) {
 module.exports = {
   sendregistrationEmail,
 };
+
+
