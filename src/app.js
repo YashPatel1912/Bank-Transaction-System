@@ -11,6 +11,10 @@ const authRoutes = require("./routes/auth.route");
 const accountRoutes = require("./routes/account.routes");
 const transectionRoutes = require("./routes/transection.route");
 
+app.get("/", (req, res) => {
+  res.send("Welcome to the Bank Transection API");
+});
+
 // use routes
 app.use("/api/auth", authRoutes);
 app.use("/api/accounts", accountRoutes);
