@@ -20,6 +20,7 @@ const mongoose = require("mongoose");
  * 10. Send email notification
  */
 
+//* This function is used to create a new transection between two accounts */
 async function createTransection(req, res) {
   // 1. Validate request
   const { fromAccount, toAccount, amount, idempotencyKey } = req.body;
@@ -173,6 +174,7 @@ async function createTransection(req, res) {
   });
 }
 
+//* This function is used to create initial fund transfer from system account to user account when user register for the first time
 async function createInitialFundTransection(req, res) {
   const { toAccount, amount, idempotencyKey } = req.body;
 
