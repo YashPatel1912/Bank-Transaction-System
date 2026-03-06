@@ -7,11 +7,13 @@ app.use(express.json());
 app.use(cookieParser());
 
 // Routes
-const authRouter = require("./routes/auth.route");
-const accountRouter = require("./routes/account.routes");
+const authRoutes = require("./routes/auth.route");
+const accountRoutes = require("./routes/account.routes");
+const transectionRoutes = require("./routes/transection.route");
 
 // use routes
-app.use("/api/auth", authRouter);
-app.use("/api/accounts", accountRouter);
+app.use("/api/auth", authRoutes);
+app.use("/api/accounts", accountRoutes);
+app.use("/api/transections", transectionRoutes);
 
 module.exports = app;
