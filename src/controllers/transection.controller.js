@@ -243,7 +243,28 @@ async function createInitialFundTransection(req, res) {
   });
 }
 
+// * This function is used to get transaction history of authenticated user
+async function getTransectionHistory(req, res) {
+  const account = await accountModel.findOne({ user: req.user._id });
+
+  if (!account) {
+    return res.status(404).json({ error: "Account not found." });
+  }
+
+  const transactions = await transectionModel
+    .find({
+      $or: [{ fromAccount: account._id }, { toAccount: account._id }],
+    })
+    .sort({ createdAt: -1 })
+    .populate("fromAccount toAccount", "accountNumber");
+
+  return res.status(200).json({
+    transactions,
+  });
+}
+
 module.exports = {
   createTransection,
   createInitialFundTransection,
+  getTransectionHistory,
 };

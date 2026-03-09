@@ -18,4 +18,9 @@ transectionRoutes.post(
   transectionController.createInitialFundTransection,
 );
 
+transectionRoutes.get(
+  "/history",
+  authMiddleware.authMiddleware,
+  transectionController.getTransectionHistory,
+);
 module.exports = transectionRoutes;
